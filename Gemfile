@@ -11,6 +11,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'slim'
 gem 'dotenv-rails'
+gem 'aws-sdk', '< 2.0'
 gem "paperclip", "~> 4.3"
 gem 'rack-cors', :require => 'rack/cors'
 gem 'kaminari'

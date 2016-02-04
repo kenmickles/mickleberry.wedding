@@ -16,5 +16,8 @@
 !/log/.keep
 /tmp
 
+# Environment-specific config
+.env
+
 # Photo uploads
 public/system

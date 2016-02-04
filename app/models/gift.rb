@@ -8,6 +8,6 @@ class Gift < ActiveRecord::Base
   end
 
   def registry
-    "Amazon" if link.match(/amazon\.com/)
+    "Amazon" if link.try(:match, /amazon\.com/)
   end
 end
