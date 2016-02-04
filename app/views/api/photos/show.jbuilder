@@ -1,0 +1,1 @@
+json.partial! "photo", locals: { photo: @photo }
