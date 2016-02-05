@@ -79,6 +79,7 @@ GEM
       railties (>= 3.0.0)
     faker (1.6.1)
       i18n (~> 0.5)
+    geocoder (1.2.9)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
@@ -93,6 +94,7 @@ GEM
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    kramdown (1.9.0)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -213,9 +215,11 @@ DEPENDENCIES
   dotenv-rails
   factory_girl_rails
   faker
+  geocoder
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
+  kramdown
   paperclip (~> 4.3)
   pg
   rack-cors

@@ -15,6 +15,8 @@ gem 'aws-sdk', '< 2.0'
 gem "paperclip", "~> 4.3"
 gem 'rack-cors', :require => 'rack/cors'
 gem 'kaminari'
+gem 'geocoder'
+gem 'kramdown'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -1,0 +1,1 @@
+json.partial! "recommendation", locals: { recommendation: @recommendation }
