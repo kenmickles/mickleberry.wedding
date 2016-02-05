@@ -1,8 +1,13 @@
 class Api::ApiController < ActionController::Base
+  before_action :set_view_path
   protect_from_forgery with: :null_session
   rescue_from Exception, with: :json_error
 
   protected
+
+  def set_view_path
+    prepend_view_path "#{Rails.root}/app/views/api"
+  end
 
   def json_error(error)
     status = error.is_a?(ActiveRecord::RecordNotFound) ? 404 : 500

@@ -1,16 +1,18 @@
 class Photo < ActiveRecord::Base
   has_attached_file :image, styles: { medium: "750x750>" }
+  
   validates_attachment_presence :image
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
-  
+
   belongs_to :user
+  has_many :comments, dependent: :destroy
 
   def image_from_url(url)
     self.image = URI.parse(url)
   end
 
   def photographer
-    super || user.try(:name)
+    super || user.try(:name) || "Somebody"
   end
 
   def avatar
