@@ -13,6 +13,7 @@ class Api::UsersController < Api::ApiController
     @user = current_user
     @user.name = params[:name].strip if params[:name]
     @user.avatar = params[:avatar] if params[:avatar]
+    @user.attending = params[:attending] if params.has_key?(:attending)
     @user.save!
     render :show
   end
