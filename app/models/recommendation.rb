@@ -9,10 +9,6 @@ class Recommendation < ActiveRecord::Base
   geocoded_by :address
   after_validation :geocode, if: -> (r) { r.needs_geocoding? }
 
-  def image_from_url(url)
-    self.image = URI.parse(url)
-  end
-
   protected
 
   def needs_geocoding?

@@ -1,21 +1,18 @@
 class Photo < ActiveRecord::Base
+  enum source: [ :instagram, :app ]
+  belongs_to :user
+  has_many :comments, dependent: :destroy
   has_attached_file :image, styles: { medium: "750x750>" }
   
   validates_attachment_presence :image
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
-
-  belongs_to :user
-  has_many :comments, dependent: :destroy
-
-  def image_from_url(url)
-    self.image = URI.parse(url)
-  end
+  validates_uniqueness_of :instagram_id, allow_blank: true
 
   def photographer
     super || user.try(:name) || "Somebody"
   end
 
   def avatar
-    user ? user.avatar.url(:thumb) : "default_avatar.png"
+    super || (user ? user.avatar.url(:thumb) : nil) || "default_avatar.png"
   end
 end

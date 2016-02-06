@@ -17,12 +17,14 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'kaminari'
 gem 'geocoder'
 gem 'kramdown'
+gem 'httparty'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'spring'
   gem 'rspec-rails', '~> 3.0'
+  gem 'awesome_print'
 end
 
 group :development do

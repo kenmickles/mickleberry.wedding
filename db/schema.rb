@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160206013934) do
+ActiveRecord::Schema.define(version: 20160206175000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,7 +54,13 @@ ActiveRecord::Schema.define(version: 20160206013934) do
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.integer  "user_id"
+    t.string   "avatar"
+    t.integer  "source"
+    t.string   "instagram_id"
   end
+
+  add_index "photos", ["created_at"], name: "index_photos_on_created_at", using: :btree
+  add_index "photos", ["instagram_id"], name: "index_photos_on_instagram_id", using: :btree
 
   create_table "recommendations", force: :cascade do |t|
     t.string   "name",                                         null: false

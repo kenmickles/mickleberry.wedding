@@ -3,10 +3,6 @@ class Gift < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
   validates :name, presence: true
 
-  def image_from_url(url)
-    self.image = URI.parse(url)
-  end
-
   def registry
     "Amazon" if link.try(:match, /amazon\.com/)
   end
