@@ -1,7 +1,7 @@
 namespace :photos do
   desc "Fetch Instagram photos tagged #mickleberry"
   task :instagram => :environment do
-    tags = %w(mickleberry mickleberrywedding)
+    tags = ENV['INSTAGRAM_TAGS'].split(',').map(&:strip)
     max_iterations = 5
 
     tags.each do |tag|
