@@ -1,4 +1,4 @@
-json.extract! photo, :id, :caption, :created_at
+json.extract! photo, :id, :caption, :created_at, :source, :instagram_id
 
 json.image do
   json.medium asset_url(photo.image.url(:medium))

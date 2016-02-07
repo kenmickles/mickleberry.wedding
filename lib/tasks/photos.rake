@@ -19,6 +19,10 @@ namespace :photos do
           }
         })
 
+        if data['status'] == 'fail'
+          raise "Instagram API said: #{data['message']}"
+        end
+
         items += data['items'] if data['items']
         
         if data['more_available'] && i < max_iterations
@@ -33,9 +37,9 @@ namespace :photos do
       # only keep the photos
       items.select! { |i| i['media_type'] == 1 }
 
-      item_codes = items.collect { |i| i['code'] }
-      existing_codes = Photo.where(instagram_id: item_codes).pluck(:instagram_id)
-      new_items = items.reject { |i| existing_codes.include?(i['code']) }
+      item_ids = items.collect { |i| i['id'] }
+      existing_ids = Photo.where(instagram_id: item_ids).pluck(:instagram_id)
+      new_items = items.reject { |i| existing_ids.include?(i['id']) }
 
       puts "Found #{new_items.length} new photos."
 
@@ -45,7 +49,7 @@ namespace :photos do
           photographer: item['user']['username'],
           avatar: item['user']['profile_pic_url'],
           caption: item['caption']['text'],
-          instagram_id: item['code'],
+          instagram_id: item['id'],
           created_at: Time.at(item['taken_at']),
           source: "instagram"
         )
