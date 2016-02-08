@@ -19,7 +19,7 @@ namespace :recommendations do
         image: "https://d1xyolhen8fnqh.cloudfront.net/media/hotels/slideshow_images_staged/large/1035769.jpg"
       },
       {
-        name: "Kensington Kinetic Sculpture Derby & Arts Festival 2015",
+        name: "Kensington Kinetic Sculpture Derby & Arts Festival 2016",
         address: "Trenton Avenue and E Susquehanna Philadelphia, PA 19125",
         link: "http://www.visitphilly.com/events/philadelphia/kensington-kinetic-sculpture-derby/",
         category: "attraction",
