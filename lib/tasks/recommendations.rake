@@ -1,6 +1,6 @@
 namespace :recommendations do
   desc "Reset recommendations from Google Doc"
-  task :reload do
+  task :reload => :environment do
     recs = [
       {
         name: "Center City Pretzel Co",
