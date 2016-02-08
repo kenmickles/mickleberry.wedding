@@ -150,6 +150,8 @@ GEM
     rb-fsevent (0.9.7)
     rdoc (4.2.1)
       json (~> 1.4)
+    rollbar (2.7.1)
+      multi_json
     rspec-core (3.4.1)
       rspec-support (~> 3.4.0)
     rspec-expectations (3.4.0)
@@ -232,6 +234,7 @@ DEPENDENCIES
   rack-cors
   rails (= 4.2.5)
   rb-fsevent
+  rollbar (~> 2.7.1)
   rspec-rails (~> 3.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
