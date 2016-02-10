@@ -1,0 +1,17 @@
+coffee:
+  $ -> initVenue()
+
+.venue-map
+  #venue-map style="width:100%; height:100%;"
+
+#venue-popup style="display:none"
+  .venue-popup
+    p
+      = image_tag @venue.image.url(:medium)
+    h4
+      = @venue.name
+      small
+        = @venue.address
+    p
+      button.btn.btn-primary.btn-sm.btn-block onclick="location.href='#{@venue.google_maps_link}'"
+        | Get directions &raquo;

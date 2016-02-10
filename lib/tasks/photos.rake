@@ -50,6 +50,7 @@ namespace :photos do
           avatar: item['user']['profile_pic_url'],
           caption: item['caption']['text'],
           instagram_id: item['id'],
+          instagram_code: item['code'],
           created_at: Time.at(item['taken_at']),
           source: "instagram"
         )

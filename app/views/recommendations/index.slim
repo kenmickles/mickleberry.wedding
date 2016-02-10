@@ -1,0 +1,22 @@
+
+coffee:
+  $ -> initRecommendations()
+
+.recommendations-map.hidden-xs
+  .row
+    .col-sm-8.col-lg-9
+      #map
+
+.row
+  .recommendations-list.col-sm-4.col-lg-3.pull-right
+    - @recommendations.each_with_index do |rec, i|
+      .recommendation data-index="#{i}"
+        = image_tag rec.image.url(:medium)
+        h4
+          = category_icon(rec)
+          | &nbsp;
+          = rec.name
+          small = link_to rec.address, rec.google_maps_link, title: "Get directions"
+        = simple_format(rec.description)
+        = link_to "More info &raquo;".html_safe, rec.link, class: "btn btn-default btn-sm"
+        hr

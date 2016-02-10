@@ -1,0 +1,47 @@
+doctype html
+html
+  head
+    meta charset="UTF-8"
+    meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0"
+    meta name="description" content=""
+    title = [@page_title, "#mickleberry - 5/21/16"].compact.join(' | ')
+    = stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Rock+Salt', 'data-turbolinks-track' => true
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  body class="#{body_classes}"
+    nav.navbar.navbar-default.navbar-fixed-top
+      .container-fluid
+        .navbar-header
+          button.navbar-toggle.collapsed data-toggle="collapse" data-target=".navbar-collapse"
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          = link_to "#mickleberry", root_path, class: "navbar-brand"
+        .collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li class="#{'active' if controller_name == 'pages' && action_name == 'venue'}"
+              = link_to "Venue", venue_path
+            li class="#{'active' if controller_name == 'photos'}"
+              = link_to "Photos", photos_path
+            li
+              = link_to "Registry", "https://www.amazon.com/registry/wedding/1XEYPJ43GL6AE"
+            li class="#{'active' if controller_name == 'recommendations'}"
+              = link_to "Recomendations", recommendations_path
+            li class="#{'active' if controller_name == 'rsvps'}"
+              = link_to "RSVP", new_rsvp_path, class: "rsvp"
+          / = link_to "RSVP", new_rsvp_path, class: "btn btn-primary navbar-btn"
+
+    .container-fluid
+      #flash
+        - if flash[:notice].present?
+          .alert.alert-success
+            = link_to "&times;".html_safe, '#', class: "close"
+            p = notice
+
+        - if flash[:alert].present?
+          .alert.alert-danger
+            = link_to "&times;".html_safe, '#', class: "close"
+            p = alert
+      #content
+        = yield

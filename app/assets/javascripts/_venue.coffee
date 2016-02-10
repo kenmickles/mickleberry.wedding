@@ -1,0 +1,34 @@
+window.initVenue = ->
+  ll = [39.9766392, -75.1342555]
+
+  # center map on Front & Palmer
+  map = L.map('venue-map', {
+    scrollWheelZoom: false
+  }).setView(ll, 14)
+
+  # add base tile layer from MapBox
+  L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
+    maxZoom: 18,
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+      '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+      'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    id: 'mapbox.streets'
+  }).addTo(map)
+
+  centerOnMarkerAndPopup = (e) ->
+    px = map.project(e.popup._latlng)
+    px.y -= e.popup._container.clientHeight/2
+    map.panTo(map.unproject(px), { animate: true })
+
+  map.on('popupopen', centerOnMarkerAndPopup)
+
+  popup = $('#venue-popup').html()
+
+  marker = L.marker(ll)
+    .addTo(map)
+    .bindPopup(popup)
+    .openPopup()
+
+  # clean up before page change
+  $(document).on 'page:before-change', (e) ->
+    $('.venue-map').remove()

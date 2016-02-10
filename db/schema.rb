@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160206175000) do
+ActiveRecord::Schema.define(version: 20160209182605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20160206175000) do
     t.string   "avatar"
     t.integer  "source"
     t.string   "instagram_id"
+    t.string   "instagram_code"
   end
 
   add_index "photos", ["created_at"], name: "index_photos_on_created_at", using: :btree
@@ -79,6 +80,18 @@ ActiveRecord::Schema.define(version: 20160206175000) do
   end
 
   add_index "recommendations", ["name"], name: "index_recommendations_on_name", using: :btree
+
+  create_table "rsvps", force: :cascade do |t|
+    t.string   "name",                      null: false
+    t.string   "email"
+    t.text     "message"
+    t.boolean  "attending",  default: true, null: false
+    t.integer  "user_id"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "rsvps", ["name"], name: "index_rsvps_on_name", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

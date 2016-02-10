@@ -15,4 +15,8 @@ class Photo < ActiveRecord::Base
   def avatar
     super || (user ? user.avatar.url(:thumb) : nil) || "default_avatar.png"
   end
+
+  def instagram_link
+    "https://www.instagram.com/p/#{instagram_code}" if instagram_code.present?
+  end
 end

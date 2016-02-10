@@ -1,0 +1,32 @@
+.recommendations-map {
+  position: fixed;
+  top: 65px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  #map, .row, .row > div {
+    height: 100%;
+  }
+}
+
+.recommendations-list {
+  background: #fff;
+  padding-top: 16px;
+  padding-bottom: 16px;
+
+  .recommendation {
+    &:last-child hr {
+      display: none;
+    }
+
+    h4 small {
+      margin-top: 2px;
+      display: block;
+
+      a {
+        color: $gray-light;
+      }
+    }
+  }
+}

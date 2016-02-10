@@ -1,0 +1,23 @@
+.grid {
+  margin: auto;
+}
+
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.grid-sizer,
+.grid-item {
+  width: 24.5%;
+  margin: 0.25%;
+
+  img {
+    max-width: 100%;
+  }
+}
+
+.grid-item {
+  float: left;
+}

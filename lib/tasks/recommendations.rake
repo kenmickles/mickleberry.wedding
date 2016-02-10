@@ -33,6 +33,16 @@ namespace :recommendations do
         category: "attraction",
         description: "Medical wonders in an architectural gem",
         image: "http://www.visitphilly.com/resize/images/MutterMuseum-003-BKrist-900vp-587x0.jpg"
+      },
+      {
+        category: "home",
+        name: "Front & Palmer",
+        address: "1750 N Front St, Philadelphia, PA 19122",
+        latitude: 39.9766392,
+        longitude: -75.1342555,
+        description: "This is the wedding venue!",
+        image: "http://www.susanstripling.com/blog/wp-content/uploads/2014/08/15_front_and_palmer_wedding.jpg",
+        link: "http://www.frontandpalmer.com/"
       }
     ]
 
@@ -40,7 +50,7 @@ namespace :recommendations do
 
     recs.each do |rec|
       r = Recommendation.create!(rec)
-      puts "Loaded #{r.name}"
+      puts "Loaded recommendation ##{r.id}: #{r.name}"
       sleep 1.0 # prevent geocoder rate limiting
     end
   end
