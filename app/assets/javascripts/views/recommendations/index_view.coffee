@@ -1,19 +1,8 @@
-window.initRecommendations = ->
+window.Views.Recommendations ||= {}
+
+class Views.Recommendations.IndexView extends Views.ApplicationView
+  map = null
   markers = []
-
-  # center map on Front & Palmer
-  map = L.map('map', {
-    scrollWheelZoom: false
-  }).setView([39.9766392, -75.1342555], 13)
-
-  # add base tile layer from MapBox
-  L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
-    maxZoom: 18,
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-      '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-      'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-    id: 'mapbox.streets'
-  }).addTo(map)
 
   categoryIcon = (category) ->
     switch category
@@ -62,8 +51,25 @@ window.initRecommendations = ->
     index = $(@).data('index')
     markers[index].closePopup()
 
-  # fetch recommendation data from API
-  $.get('/api/recommendations', recsLoaded)
+  render: ->
+    super()
 
-  # attach hover event to recommendation list
-  $('.recommendation').hover(overListItem, outListItem)
+    # center map on Front & Palmer
+    map = L.map('map', {
+      scrollWheelZoom: false
+    }).setView([39.9766392, -75.1342555], 13)
+
+    # add base tile layer from MapBox
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
+      maxZoom: 18,
+      attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+        '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+        'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+      id: 'mapbox.streets'
+    }).addTo(map)
+
+    # fetch recommendation data from API
+    $.get('/api/recommendations', recsLoaded)
+
+    # attach hover event to recommendation list
+    $('.recommendation').hover(overListItem, outListItem)

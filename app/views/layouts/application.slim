@@ -9,7 +9,7 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
-  body class="#{body_classes}"
+  body class="#{body_classes}" data-js-view="#{js_view}"
     nav.navbar.navbar-default.navbar-fixed-top
       .container-fluid
         .navbar-header
