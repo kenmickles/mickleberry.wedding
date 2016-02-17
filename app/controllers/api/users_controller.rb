@@ -6,15 +6,22 @@ class Api::UsersController < Api::ApiController
   end
 
   def create
-    update
+    save_and_show
   end
 
   def update
+    save_and_show
+  end
+
+  protected
+
+  def save_and_show
     @user = current_user
-    @user.name = params[:name].strip if params[:name]
-    @user.avatar = params[:avatar] if params[:avatar]
-    @user.attending = params[:attending] if params.has_key?(:attending)
-    @user.save!
+    @user.update!(user_params)
     render :show
+  end
+
+  def user_params
+    params.require(:user).permit(:name, :avatar)
   end
 end

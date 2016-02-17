@@ -1,5 +1,4 @@
 body.pages.home {
-  background-color: #111;
   background-image: image-url('home.jpg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -45,6 +44,10 @@ body.pages.home {
     @media only screen and (max-width : 320px) {
       h1 {
         font-size: 28px;
+        margin-top: 0;
+      }
+
+      h1, p, small {
         margin-bottom: 10px;
       }
     }

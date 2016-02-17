@@ -1,23 +1,43 @@
-.grid {
-  margin: auto;
-}
-
-.grid:after {
-  content: '';
-  display: block;
-  clear: both;
-}
-
-.grid-sizer,
-.grid-item {
-  width: 24.5%;
-  margin: 0.25%;
-
-  img {
-    max-width: 100%;
+body.photos.index {
+  > .container-fluid {
+    padding: 0;
   }
-}
 
-.grid-item {
-  float: left;
+  .grid {
+    margin: auto;
+  }
+
+  .grid:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+
+  .grid-sizer,
+  .grid-item {
+    width: 24.5%;
+    margin: 0.25%;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .grid-item {
+    float: left;
+  }
+
+  @media (max-width: $screen-xs-max) {
+    .grid-sizer,
+    .grid-item {
+      width: 99.5%;
+    }
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    .grid-sizer,
+    .grid-item {
+      width: 49.5%;
+    }
+  }
 }

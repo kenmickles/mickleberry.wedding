@@ -16,4 +16,16 @@ module ApplicationHelper
   def markdown(str)
     Kramdown::Document.new(str).to_html.html_safe if str.present?
   end
+
+  def meal_options
+    @meal_options ||= Meal.all.order(:name).collect { |m| [m.name, m.id] }
+  end
+
+  def possessive(str)
+    if str.match(/s$/i)
+      "#{str}'"
+    else
+      "#{str}'s"
+    end
+  end
 end

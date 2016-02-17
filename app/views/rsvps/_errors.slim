@@ -1,0 +1,5 @@
+- if @rsvp.errors.any?
+  .alert.alert-danger
+    h5 Some things went badly:
+    - @rsvp.errors.full_messages.each do |msg|
+      p = msg

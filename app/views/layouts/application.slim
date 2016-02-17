@@ -33,15 +33,5 @@ html
           / = link_to "RSVP", new_rsvp_path, class: "btn btn-primary navbar-btn"
 
     .container-fluid
-      #flash
-        - if flash[:notice].present?
-          .alert.alert-success
-            = link_to "&times;".html_safe, '#', class: "close"
-            p = notice
-
-        - if flash[:alert].present?
-          .alert.alert-danger
-            = link_to "&times;".html_safe, '#', class: "close"
-            p = alert
       #content
         = yield

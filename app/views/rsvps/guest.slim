@@ -1,0 +1,17 @@
+= render 'errors'
+
+= form_for @rsvp, class: "form" do |f|
+  = hidden_field_tag 'previous_action', action_name
+
+  br.hidden-xs
+  h2 Are you bringing a guest?
+  p If so, please enter their name below.
+  br
+  
+  .form-group
+    = f.label :guest_name, class: "input-label"
+    = f.text_field :guest_name, placeholder: "First & Last Name", class: "form-control", autofocus: true
+  
+  .form-group
+    = f.submit "Submit", class: "btn btn-primary btn-block visible-xs"
+    = f.submit "Submit", class: "btn btn-primary hidden-xs"

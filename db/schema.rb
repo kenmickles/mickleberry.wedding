@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160209182605) do
+ActiveRecord::Schema.define(version: 20160213204511) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,24 @@ ActiveRecord::Schema.define(version: 20160209182605) do
 
   add_index "gifts", ["name"], name: "index_gifts_on_name", using: :btree
   add_index "gifts", ["purchased"], name: "index_gifts_on_purchased", using: :btree
+
+  create_table "guests", force: :cascade do |t|
+    t.string   "name",                       null: false
+    t.boolean  "plus_one",   default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "guests", ["name"], name: "index_guests_on_name", unique: true, using: :btree
+
+  create_table "meals", force: :cascade do |t|
+    t.string   "name",        null: false
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "meals", ["name"], name: "index_meals_on_name", using: :btree
 
   create_table "photos", force: :cascade do |t|
     t.string   "caption"
@@ -82,27 +100,29 @@ ActiveRecord::Schema.define(version: 20160209182605) do
   add_index "recommendations", ["name"], name: "index_recommendations_on_name", using: :btree
 
   create_table "rsvps", force: :cascade do |t|
-    t.string   "name",                      null: false
+    t.string   "name",                         null: false
     t.string   "email"
     t.text     "message"
-    t.boolean  "attending",  default: true, null: false
+    t.boolean  "attending",     default: true, null: false
     t.integer  "user_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.string   "guest_name"
+    t.integer  "meal_id"
+    t.integer  "guest_meal_id"
   end
 
   add_index "rsvps", ["name"], name: "index_rsvps_on_name", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
-    t.string   "token",                              null: false
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.string   "token",               null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.boolean  "attending",           default: true
   end
 
   add_index "users", ["token"], name: "index_users_on_token", unique: true, using: :btree

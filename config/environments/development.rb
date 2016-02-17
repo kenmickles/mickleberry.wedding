@@ -40,5 +40,5 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   # Output pretty (indented) format
-  Slim::Engine.set_default_options pretty: true
+  Slim::Engine.set_options pretty: true
 end

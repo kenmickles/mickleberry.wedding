@@ -1,0 +1,22 @@
+= render 'errors'
+
+= form_for @rsvp, class: "form" do |f|
+  = hidden_field_tag 'previous_action', action_name
+  
+  br.hidden-xs
+  h2 Ok, great!
+  p Now, what do you want to eat?
+  br
+
+  .form-group
+    = f.label :meal_id, "#{possessive(@rsvp.first_name)} Meal <small class='text-muted'>(required)</small>".html_safe, class: "input-label"
+    = f.select :meal_id, meal_options, { include_blank: 'Select...' }, { class: "form-control", required: true, autofocus: true }
+
+  - if @rsvp.guest_name.present?
+    .form-group
+      = f.label :guest_meal_id, "#{possessive(@rsvp.guest_first_name)} Meal <small class='text-muted'>(required)</small>".html_safe, class: "input-label"
+      = f.select :guest_meal_id, meal_options, { include_blank: 'Select...' }, { class: "form-control", required: true }
+
+  .form-group
+    = f.submit "Submit", class: "btn btn-primary btn-block visible-xs"
+    = f.submit "Submit", class: "btn btn-primary hidden-xs"
