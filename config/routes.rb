@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :gifts, only: [:index]
+    resources :meals, only: [:index]
     resources :photos, only: [:create, :index, :show, :destroy] do
       resources :comments, only: [:index, :create, :destroy]
     end
