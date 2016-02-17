@@ -20,21 +20,12 @@ class Views.Pages.VenueView extends Views.ApplicationView
       id: 'mapbox.streets'
     }).addTo(map)
 
-    centerOnMarkerAndPopup = (e) ->
-      px = map.project(e.popup._latlng)
-      px.y -= e.popup._container.clientHeight/2
-      map.panTo(map.unproject(px), { animate: true })
-
-    # map.on('popupopen', centerOnMarkerAndPopup)
-
     popup = $('#venue-popup').html()
 
     marker = L.marker(ll)
       .addTo(map)
       .bindPopup(popup)
-
-    $(document).imagesLoaded ->
-      marker.openPopup()
+      .openPopup()
 
   cleanup: ->
     super()
