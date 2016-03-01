@@ -29,4 +29,4 @@ class Views.Pages.VenueView extends Views.ApplicationView
 
   cleanup: ->
     super()
-    # $('.venue-map').remove()
+    map = null

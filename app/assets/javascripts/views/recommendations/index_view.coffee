@@ -73,3 +73,8 @@ class Views.Recommendations.IndexView extends Views.ApplicationView
 
     # attach hover event to recommendation list
     $('.recommendation').hover(overListItem, outListItem)
+
+  cleanup: ->
+    super()
+    map = null
+    markers = []
