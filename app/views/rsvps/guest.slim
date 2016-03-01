@@ -13,5 +13,4 @@
     = f.text_field :guest_name, placeholder: "First & Last Name", class: "form-control", autofocus: true
   
   .form-group
-    = f.submit "Submit", class: "btn btn-primary btn-block visible-xs"
-    = f.submit "Submit", class: "btn btn-primary hidden-xs"
+    = f.submit "Continue &raquo;".html_safe, class: "btn btn-primary btn-block-xs"

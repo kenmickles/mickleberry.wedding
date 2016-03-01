@@ -14,5 +14,4 @@
     = f.label :message, "Message for the bride and groom", class: "input-label"
     = f.text_area :message, class: "form-control", placeholder: "Questions, comments, or general well wishes"
   .form-group
-    = f.submit "Submit", class: "btn btn-primary btn-block visible-xs"
-    = f.submit "Submit", class: "btn btn-primary hidden-xs"
+    = f.submit "Continue &raquo;".html_safe, class: "btn btn-primary btn-block-xs"

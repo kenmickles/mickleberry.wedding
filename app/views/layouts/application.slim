@@ -29,7 +29,7 @@ html
             li class="#{'active' if controller_name == 'recommendations'}"
               = link_to "Recomendations", recommendations_path
             li class="#{'active' if controller_name == 'rsvps'}"
-              = link_to "RSVP", new_rsvp_path, class: "rsvp"
+              = link_to "RSVP", new_rsvp_path(new: true), class: "rsvp"
           / = link_to "RSVP", new_rsvp_path, class: "btn btn-primary navbar-btn"
 
     .container-fluid

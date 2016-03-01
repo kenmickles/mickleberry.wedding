@@ -10,8 +10,7 @@
   
   .form-group
     = f.label :message, "Message for the bride and groom".html_safe, class: "input-label"
-    = f.text_area :message, class: "form-control", autofocus: true, placeholder: "Questions, comments, or general well wishes"
+    = f.text_area :message, class: "form-control", autofocus: true, required: true, placeholder: "Questions, comments, or general well wishes"
 
   .form-group
-    = f.submit "Submit", class: "btn btn-primary btn-block visible-xs"
-    = f.submit "Submit", class: "btn btn-primary hidden-xs"
+    = f.submit "Send", class: "btn btn-primary btn-block-xs"

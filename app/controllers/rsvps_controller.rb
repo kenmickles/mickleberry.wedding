@@ -31,6 +31,11 @@ class RsvpsController < ApplicationController
   protected
 
   def setup_rsvp
+    if params[:new].present?
+      session[:rsvp_id] = nil
+      redirect_to new_rsvp_path
+    end
+    
     @page_title = "RSVP"
     @rsvp = Rsvp.find_or_initialize_by(id: session[:rsvp_id]) 
   end

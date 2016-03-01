@@ -36,3 +36,10 @@ img {
 .leaflet-container a {
   color: $brand-primary;
 }
+
+@media all and (max-width: 480px) {
+  .btn-block-xs {
+    width: 100%;
+    display: block;
+  }
+}
