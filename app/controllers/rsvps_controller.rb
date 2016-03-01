@@ -8,6 +8,7 @@ class RsvpsController < ApplicationController
   end
 
   def meal
+    @meals = Meal.all.order(:name)
   end
 
   def message
