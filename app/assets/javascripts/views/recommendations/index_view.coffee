@@ -13,7 +13,7 @@ class Views.Recommendations.IndexView extends Views.ApplicationView
 
   markerColor = (category) ->
     if category == 'home'
-      'darkred'
+      'purple'
     else
       'blue'
 
