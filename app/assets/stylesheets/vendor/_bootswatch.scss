@@ -24,13 +24,13 @@ $web-font-path: "https://fonts.googleapis.com/css?family=Raleway:400,700" !defau
     border-radius: $border-radius-base;
 
     &:hover {
-      border: 1px solid #ddd;
+      // border: 1px solid #ddd;
     }
   }
 
   &-nav > .active > a,
   &-nav > .active > a:hover {
-    border: 1px solid #ddd;
+    // border: 1px solid #ddd;
   }
 
   &-default .navbar-nav > .active > a:hover {
