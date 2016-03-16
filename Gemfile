@@ -29,6 +29,12 @@ group :development, :test do
   gem 'spring'
   gem 'rspec-rails', '~> 3.0'
   gem 'awesome_print'
+
+  # capistrano
+  gem 'capistrano', '~> 3.0'
+  gem 'capistrano-bundler', '~> 1.1', require: false
+  gem 'capistrano-rails', '~> 1.1', require: false
+  gem 'capistrano-rvm', require: false
 end
 
 group :development do
