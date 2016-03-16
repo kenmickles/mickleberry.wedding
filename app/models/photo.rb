@@ -1,7 +1,6 @@
 class Photo < ActiveRecord::Base
   enum source: [ :instagram, :app ]
   belongs_to :user
-  has_many :comments, dependent: :destroy
   has_attached_file :image, styles: { medium: "750x750>" }
   
   validates_attachment_presence :image

@@ -1,1 +1,0 @@
-json.array! @recommendations, partial: 'recommendation', as: :recommendation

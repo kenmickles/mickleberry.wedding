@@ -5,6 +5,5 @@ class User < ActiveRecord::Base
   validates :token, presence: true, uniqueness: true
   
   has_many :photos, dependent: :destroy
-  has_many :comments, dependent: :destroy
   has_one :rsvp
 end

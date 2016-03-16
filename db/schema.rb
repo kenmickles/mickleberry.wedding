@@ -11,34 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160316040010) do
-
-  create_table "comments", force: :cascade do |t|
-    t.integer  "user_id",    limit: 4,     null: false
-    t.integer  "photo_id",   limit: 4,     null: false
-    t.text     "message",    limit: 65535, null: false
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-  end
-
-  add_index "comments", ["photo_id"], name: "index_comments_on_photo_id", using: :btree
-
-  create_table "gifts", force: :cascade do |t|
-    t.string   "name",               limit: 191,                                            null: false
-    t.text     "description",        limit: 65535
-    t.string   "link",               limit: 191
-    t.boolean  "purchased",                                                 default: false
-    t.string   "image_file_name",    limit: 191
-    t.string   "image_content_type", limit: 191
-    t.integer  "image_file_size",    limit: 4
-    t.datetime "image_updated_at"
-    t.datetime "created_at",                                                                null: false
-    t.datetime "updated_at",                                                                null: false
-    t.decimal  "price",                            precision: 10, scale: 2
-  end
-
-  add_index "gifts", ["name"], name: "index_gifts_on_name", using: :btree
-  add_index "gifts", ["purchased"], name: "index_gifts_on_purchased", using: :btree
+ActiveRecord::Schema.define(version: 20160316060007) do
 
   create_table "guests", force: :cascade do |t|
     t.string   "name",       limit: 191,                 null: false

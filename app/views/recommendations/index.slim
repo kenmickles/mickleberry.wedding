@@ -1,3 +1,6 @@
+javascript:
+  RECOMMENDATIONS = #{raw @recommendations.map(&:map_hash).to_json};
+
 .recommendations-map.hidden-xs
   .row
     .col-sm-8.col-lg-9

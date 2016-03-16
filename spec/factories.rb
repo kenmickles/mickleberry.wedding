@@ -1,7 +1,4 @@
-FactoryGirl.define do
-  factory :gift do |f|
-  end
-  
+FactoryGirl.define do  
   factory :photo do |f|
   end
 

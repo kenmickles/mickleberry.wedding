@@ -28,7 +28,7 @@ class Views.Recommendations.IndexView extends Views.ApplicationView
 
     marker = L.marker(ll, icon: icon)
       .addTo(map)
-      .bindPopup("<div class='clearfix'><img class='thumbnail' src='#{rec.image.thumb}'><h5>#{rec.name} <small><a title='Get Directions' href='#{rec.google_maps_link}'>#{rec.address}</a></small></h5></div>")
+      .bindPopup("<div class='clearfix'><img class='thumbnail' src='#{rec.thumbnail}'><h5>#{rec.name} <small><a title='Get Directions' href='#{rec.google_maps_link}'>#{rec.address}</a></small></h5></div>")
     marker.index = index
     marker.on('click', clickMarker)
     markers.push(marker)
@@ -68,8 +68,8 @@ class Views.Recommendations.IndexView extends Views.ApplicationView
       id: 'mapbox.streets'
     }).addTo(map)
 
-    # fetch recommendation data from API
-    $.get('/api/recommendations', recsLoaded)
+    # draw markers
+    addMarker(r, i) for r, i in RECOMMENDATIONS
 
     # attach hover event to recommendation list
     $('.recommendation').hover(overListItem, outListItem)
@@ -78,3 +78,4 @@ class Views.Recommendations.IndexView extends Views.ApplicationView
     super()
     map = null
     markers = []
+    delete window.RECOMMENDATIONS

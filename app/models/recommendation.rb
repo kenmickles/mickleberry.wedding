@@ -13,6 +13,20 @@ class Recommendation < ActiveRecord::Base
     "https://maps.google.com?q=#{URI.encode(address)}"
   end
 
+  def map_hash
+    {
+      id: id,
+      category: category,
+      name: name,
+      address: address,
+      latitude: latitude,
+      longitude: longitude,
+      link: link,
+      thumbnail: ActionController::Base.helpers.asset_url(image.url(:thumb)),
+      google_maps_link: google_maps_link
+    }
+  end
+
   protected
 
   def needs_geocoding?
