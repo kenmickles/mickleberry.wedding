@@ -3,6 +3,22 @@ body.photos.index {
     padding: 0;
   }
 
+  .tag-tip {
+    background-color: $brand-success;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    margin-top: 0;
+
+    b {
+      zoom: 110%;
+    }
+
+    i, span {
+      font-weight: normal;
+    }
+  }
+
   .grid {
     margin: auto;
   }
