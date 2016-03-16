@@ -3,12 +3,14 @@ lock '3.4.0'
 
 set :application, 'mickleberry.wedding'
 set :repo_url, 'git@github.com:kenmickles/mickleberry.wedding.git'
-
-# Default branch is :master
-# ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
-
+set :deploy_to, '/home/deploy/mickleberry.wedding'
 set :linked_files, %w{config/database.yml config/secrets.yml .env}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+
+# rollbar
+set :rollbar_token, ENV['ROLLBAR_ACCESS_TOKEN']
+set :rollbar_env, Proc.new { fetch :stage }
+set :rollbar_role, Proc.new { :app }
 
 namespace :deploy do
   desc 'Restart application'
