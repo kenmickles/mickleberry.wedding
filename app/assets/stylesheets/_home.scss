@@ -53,26 +53,13 @@ body.pages.home {
     }
   }
 
-  .app-buttons {
+  h3.hashtag {
     position: absolute;
     bottom: 2%;
     left: 0;
     right: 0;
     text-align: center;
-
-    h3 {
-      color: #fff;
-      text-shadow: 1px 1px 8px #333;
-    }
-
-    img {
-      height: 55px;
-      margin: 10px;
-
-      @media only screen and (max-width : $screen-sm-max) {
-        height: 40px;
-        margin-top: 0;
-      }
-    }
+    color: #fff;
+    text-shadow: 1px 1px 8px #333;
   }
 }
