@@ -118,6 +118,7 @@ GEM
     minitest (5.8.4)
     multi_json (1.11.2)
     multi_xml (0.5.5)
+    mysql2 (0.4.3)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     paperclip (4.3.2)
@@ -126,7 +127,6 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (= 0.3.0)
-    pg (0.18.4)
     rack (1.6.4)
     rack-cors (0.4.0)
     rack-test (0.6.3)
@@ -241,8 +241,8 @@ DEPENDENCIES
   kaminari
   kramdown
   leaflet-rails
+  mysql2
   paperclip (~> 4.3)
-  pg
   rack-cors
   rails (= 4.2.6)
   rb-fsevent

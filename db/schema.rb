@@ -11,117 +11,114 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160213204511) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20160316040010) do
 
   create_table "comments", force: :cascade do |t|
-    t.integer  "user_id",    null: false
-    t.integer  "photo_id",   null: false
-    t.text     "message",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id",    limit: 4,     null: false
+    t.integer  "photo_id",   limit: 4,     null: false
+    t.text     "message",    limit: 65535, null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   add_index "comments", ["photo_id"], name: "index_comments_on_photo_id", using: :btree
 
   create_table "gifts", force: :cascade do |t|
-    t.string   "name",                                                        null: false
-    t.text     "description"
-    t.string   "link"
-    t.boolean  "purchased",                                   default: false
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
+    t.string   "name",               limit: 191,                                            null: false
+    t.text     "description",        limit: 65535
+    t.string   "link",               limit: 191
+    t.boolean  "purchased",                                                 default: false
+    t.string   "image_file_name",    limit: 191
+    t.string   "image_content_type", limit: 191
+    t.integer  "image_file_size",    limit: 4
     t.datetime "image_updated_at"
-    t.datetime "created_at",                                                  null: false
-    t.datetime "updated_at",                                                  null: false
-    t.decimal  "price",              precision: 10, scale: 2
+    t.datetime "created_at",                                                                null: false
+    t.datetime "updated_at",                                                                null: false
+    t.decimal  "price",                            precision: 10, scale: 2
   end
 
   add_index "gifts", ["name"], name: "index_gifts_on_name", using: :btree
   add_index "gifts", ["purchased"], name: "index_gifts_on_purchased", using: :btree
 
   create_table "guests", force: :cascade do |t|
-    t.string   "name",                       null: false
-    t.boolean  "plus_one",   default: false, null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.string   "name",       limit: 191,                 null: false
+    t.boolean  "plus_one",               default: false, null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
   add_index "guests", ["name"], name: "index_guests_on_name", unique: true, using: :btree
 
   create_table "meals", force: :cascade do |t|
-    t.string   "name",        null: false
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "name",        limit: 191,   null: false
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   add_index "meals", ["name"], name: "index_meals_on_name", using: :btree
 
   create_table "photos", force: :cascade do |t|
-    t.string   "caption"
-    t.string   "source_url"
-    t.string   "photographer"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
+    t.text     "caption",            limit: 65535
+    t.string   "source_url",         limit: 255
+    t.string   "photographer",       limit: 255
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.integer  "image_file_size",    limit: 4
     t.datetime "image_updated_at"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.integer  "user_id"
-    t.string   "avatar"
-    t.integer  "source"
-    t.string   "instagram_id"
-    t.string   "instagram_code"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.integer  "user_id",            limit: 4
+    t.string   "avatar",             limit: 191
+    t.integer  "source",             limit: 4
+    t.string   "instagram_id",       limit: 191
+    t.string   "instagram_code",     limit: 191
   end
 
   add_index "photos", ["created_at"], name: "index_photos_on_created_at", using: :btree
   add_index "photos", ["instagram_id"], name: "index_photos_on_instagram_id", using: :btree
 
   create_table "recommendations", force: :cascade do |t|
-    t.string   "name",                                         null: false
-    t.text     "description"
-    t.integer  "category"
-    t.string   "address"
-    t.string   "link"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
+    t.string   "name",               limit: 191,                             null: false
+    t.text     "description",        limit: 65535
+    t.integer  "category",           limit: 4
+    t.string   "address",            limit: 191
+    t.string   "link",               limit: 191
+    t.string   "image_file_name",    limit: 191
+    t.string   "image_content_type", limit: 191
+    t.integer  "image_file_size",    limit: 4
     t.datetime "image_updated_at"
-    t.decimal  "latitude",           precision: 15, scale: 10
-    t.decimal  "longitude",          precision: 15, scale: 10
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
+    t.decimal  "latitude",                         precision: 15, scale: 10
+    t.decimal  "longitude",                        precision: 15, scale: 10
+    t.datetime "created_at",                                                 null: false
+    t.datetime "updated_at",                                                 null: false
   end
 
   add_index "recommendations", ["name"], name: "index_recommendations_on_name", using: :btree
 
   create_table "rsvps", force: :cascade do |t|
-    t.string   "name",                         null: false
-    t.string   "email"
-    t.text     "message"
-    t.boolean  "attending",     default: true, null: false
-    t.integer  "user_id"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.string   "guest_name"
-    t.integer  "meal_id"
-    t.integer  "guest_meal_id"
+    t.string   "name",          limit: 191,                  null: false
+    t.string   "email",         limit: 191
+    t.text     "message",       limit: 65535
+    t.boolean  "attending",                   default: true, null: false
+    t.integer  "user_id",       limit: 4
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.string   "guest_name",    limit: 191
+    t.integer  "meal_id",       limit: 4
+    t.integer  "guest_meal_id", limit: 4
   end
 
   add_index "rsvps", ["name"], name: "index_rsvps_on_name", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.string   "token",               null: false
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
+    t.string   "name",                limit: 191
+    t.string   "token",               limit: 191, null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "avatar_file_name",    limit: 191
+    t.string   "avatar_content_type", limit: 191
+    t.integer  "avatar_file_size",    limit: 4
     t.datetime "avatar_updated_at"
   end
 
