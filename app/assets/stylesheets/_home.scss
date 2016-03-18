@@ -11,7 +11,6 @@ body.pages.home {
 
     .fancy-font {
       font-family: 'Rock Salt', cursive;
-      // text-shadow: 1px 1px 6px #333;
     }
 
     a {
@@ -40,10 +39,11 @@ body.pages.home {
     }
 
     @media only screen and (min-width : 1200px) {
+      text-shadow: 1px 1px 6px #333;
+
       h1 {
         font-size: 96px;
         margin-bottom: 30px;
-        text-shadow: 1px 1px 6px #333;
       }
     }
 
