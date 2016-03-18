@@ -1,6 +1,5 @@
 class Photo < ActiveRecord::Base
   enum source: [ :instagram, :app ]
-  belongs_to :user
   has_attached_file :image, styles: { medium: "750x750>" }
   
   validates_attachment_presence :image
@@ -8,11 +7,11 @@ class Photo < ActiveRecord::Base
   validates_uniqueness_of :instagram_id, allow_blank: true
 
   def photographer
-    super || user.try(:name) || "Somebody"
+    super || "Somebody"
   end
 
   def avatar
-    super || (user ? user.avatar.url(:thumb) : nil) || "default_avatar.png"
+    super || "default_avatar.png"
   end
 
   def instagram_link

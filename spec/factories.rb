@@ -4,7 +4,4 @@ FactoryGirl.define do
 
   factory :recommendation do |f|
   end
-
-  factory :user do |f|
-  end
 end
