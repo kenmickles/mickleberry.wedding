@@ -3,24 +3,26 @@ def bad_date(name)
   name.blank? || name.to_s.strip.downcase == "plus one" || name.to_s.strip.split(' ').length < 2
 end
 
-namespace :guests do
-  desc "Delete and reload guest list"
-  task :reload => :environment do
-    Guest.destroy_all
+desc "Reload Guest list from Google Doc"
+task :guests => :environment do
+  session = GoogleDrive.saved_session(File.join(Rails.root, "config", "google_drive.json"))
+  sheet = session.spreadsheet_by_key(ENV['GUESTS_DOC_ID']).worksheets[0]
 
-    CSV.read("/Users/ken/Downloads/guests.csv", headers: true).each do |row|
-      if row['Guest'].present?
+  Guest.destroy_all
+
+  # skip the heading row
+  (2..sheet.num_rows).each do |row|
+    if sheet[row, 1].present?
+      Guest.create!(
+        name: sheet[row, 1].strip,
+        plus_one: sheet[row, 2].present?
+      )
+
+      unless bad_date(sheet[row, 2])
         Guest.create!(
-          name: row['Guest'].strip,
-          plus_one: row['Date'].present?
+          name: sheet[row, 2].strip,
+          plus_one: true
         )
-
-        unless bad_date(row['Date'])
-          Guest.create!(
-            name: row['Date'].strip,
-            plus_one: true
-          )
-        end
       end
     end
   end

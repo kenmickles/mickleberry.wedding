@@ -8,7 +8,6 @@ class RsvpsController < ApplicationController
   end
 
   def meal
-    @meals = Meal.all.order(:name)
   end
 
   def message
@@ -60,7 +59,7 @@ class RsvpsController < ApplicationController
     @rsvp.update(rsvp_params)
 
     if @rsvp.errors.any?
-      render @tab
+      render previous_action
     else
       session[:rsvp_id] = @rsvp.id
 

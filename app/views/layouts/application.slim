@@ -25,12 +25,13 @@ html
             li class="#{'active' if controller_name == 'photos'}"
               = link_to "Photos", photos_path
             li
-              = link_to "Registry", "https://www.amazon.com/registry/wedding/1XEYPJ43GL6AE"
+              = link_to "Registry", "https://www.amazon.com/registry/wedding/1XEYPJ43GL6AE?tag=tag=mickleberry-20"
+            li class="#{'active' if controller_name == 'pages' && action_name == 'hotels'}"
+              = link_to "Hotels", hotels_path
             li class="#{'active' if controller_name == 'recommendations'}"
               = link_to "Recomendations", recommendations_path
             li class="#{'active' if controller_name == 'rsvps'}"
               = link_to "RSVP", new_rsvp_path(new: true), class: "rsvp"
-          / = link_to "RSVP", new_rsvp_path, class: "btn btn-primary navbar-btn"
 
     .container-fluid
       #content

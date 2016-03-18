@@ -1,12 +1,11 @@
+.page-header
+  h2.page-title Thanks!
+  p We can't wait to see you there.
+
 = render 'errors'
 
 = form_for @rsvp, class: "form" do |f|
   = hidden_field_tag 'previous_action', action_name
-
-  br.hidden-xs
-  h2 Thanks!
-  p We can't wait to see you there.
-  br
   
   .form-group
     = f.label :message, "Message for the bride and groom".html_safe, class: "input-label"

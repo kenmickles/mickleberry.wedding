@@ -2,7 +2,7 @@
   h4
     = "#{possessive(name)} Meal"
     small.text-muted = " (required)"
-  - @meals.each do |meal|
+  - Meal.all.order(:name).each do |meal|
     .radio.well
       label
         = form.radio_button(attribute, meal.id, required: true)

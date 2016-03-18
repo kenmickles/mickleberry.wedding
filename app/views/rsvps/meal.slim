@@ -1,12 +1,12 @@
+.page-header
+  h2.page-title Ok, great!
+  p Now, what do you want to eat?
+
 = render 'errors'
 
 = form_for @rsvp, class: "form" do |f|
   = hidden_field_tag 'previous_action', action_name
-  
-  br.hidden-xs
-  h2 Ok, great!
-  p Now, what do you want to eat?
-  br
+  = hidden_field_tag 'rsvp[none]', nil
 
   = render 'meal_options', name: @rsvp.first_name, attribute: :meal_id, form: f
 

@@ -1,9 +1,14 @@
 .jumbotron
+  h4.fancy-font Please join us for the wedding of
   h1.fancy-font Rebekah &amp; Ken
-  small.fancy-font 5/21/16 - Philadelphia, PA
-  p.hidden-xs
-    = link_to "RSVP Now", new_rsvp_path, class: "btn btn-primary btn-lg"
-  p.visible-xs
-    = link_to "RSVP Now", new_rsvp_path, class: "btn btn-primary"
+  h2
+    | May 21, 2016 &#8226; 
+    = link_to "Front & Palmer", venue_path, title: "1750 N. Front St, Philadelphia, PA"
+    small Doors at 5:30pm. Ceremony at 6pm.
+
+  .hidden-xs
+    = link_to "RSVP Now", new_rsvp_path(new: true), class: "btn btn-primary btn-lg"
+  .visible-xs
+    = link_to "RSVP Now", new_rsvp_path(new: true), class: "btn btn-primary"
 
 h3.hashtag #mickleberry

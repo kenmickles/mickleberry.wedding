@@ -1,9 +1,10 @@
+.page-header
+  h2.page-title RSVP
+
 = render 'errors'
+
 = form_for @rsvp, class: "form" do |f|
   = hidden_field_tag 'previous_action', action_name
-  br.hidden-xs
-  h2 RSVP
-  br
   .form-group
     = f.label :name, "Name <small class='text-muted'>(required)</small>".html_safe, class: "input-label"
     = f.text_field :name, placeholder: "First & Last Name", class: "form-control", required: true, autofocus: true

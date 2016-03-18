@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   # pages
   get 'venue', to: 'pages#venue'
+  get 'hotels', to: 'pages#hotels'
 
   # redirects
   get 'registry', to: redirect('https://www.amazon.com/registry/wedding/1XEYPJ43GL6AE')

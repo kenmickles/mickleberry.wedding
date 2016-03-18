@@ -17,6 +17,10 @@ body.photos.index {
     i, span {
       font-weight: normal;
     }
+
+    @media (max-width: $screen-xs-max) {
+      font-size: 16px;
+    }
   }
 
   .grid {

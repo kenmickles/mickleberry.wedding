@@ -21,3 +21,6 @@
 
 # Photo uploads
 public/system
+
+# Google Docs config
+config/google_drive.json
