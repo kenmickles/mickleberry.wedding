@@ -5,7 +5,7 @@ namespace :photos do
     max_iterations = 5
 
     tags.each do |tag|
-      puts "Searching ##{tag}..."
+      puts "Searching ##{tag}..." unless ENV['SILENT']
 
       items = []
       max_id = nil
@@ -41,7 +41,7 @@ namespace :photos do
       existing_ids = Photo.where(instagram_id: item_ids).pluck(:instagram_id)
       new_items = items.reject { |i| existing_ids.include?(i['id']) }
 
-      puts "Found #{new_items.length} new photos."
+      puts "Found #{new_items.length} new photos." unless ENV['SILENT']
 
       new_items.each do |item|
         Photo.create!(
