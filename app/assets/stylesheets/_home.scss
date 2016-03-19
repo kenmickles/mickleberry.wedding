@@ -8,6 +8,7 @@ body.pages.home {
     background-color: transparent;
     text-align: center;
     color: #fff;
+    text-shadow: 1px 1px 6px #333;
 
     .fancy-font {
       font-family: 'Rock Salt', cursive;
@@ -27,7 +28,7 @@ body.pages.home {
     }
 
     h2 {
-      font-size: 30px;
+      font-size: 27px;
       margin-bottom: 22px;
 
       small {
@@ -38,16 +39,20 @@ body.pages.home {
       }
     }
 
-    @media only screen and (min-width : 1200px) {
-      text-shadow: 1px 1px 6px #333;
-
+    @media only screen and (min-width : 1200px) and (min-height: 900px) {
       h1 {
         font-size: 96px;
         margin-bottom: 30px;
       }
+
+      h2 {
+        font-size: 30px;
+      }
     }
 
     @media only screen and (max-width : 414px) {
+      text-shadow: none;
+
       h1 {
         font-size: 40px;
       }
