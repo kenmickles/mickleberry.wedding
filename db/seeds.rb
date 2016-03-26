@@ -14,14 +14,14 @@ meals = [
     description: "slow cooked • served boneless • red wine demi glaze • topped with onion straws • scalloped potato au gratin tower • served with spring succotash of haricot vert, edamame, red pepper queen corn"
   },
   {
-    name: "Chatham Cod",
-    short_name: "Cod",
-    description: "meyer lemon leek fondue Lentil and Rice Pilaf • served with spring succotash of haricot vert, edamame, red pepper queen corn"
+    name: "Pan Roasted Branzino",
+    short_name: "Branzino",
+    description: "blistered red and yellow tomatoes • served with spring succotash of haricot vert, edamame, red pepper queen corn"
   },
   {
     name: "Charred Grilled Seitan",
     short_name: "Seitan",
-    description: "roasted cauliflower couscous • brussel sprouts • grilled radicchio • preserved lemon • garlic aioli • served with spring succotash haricot vert, edamame, red pepper queen corn"
+    description: "roasted cauliflower couscous • brussel sprouts • grilled radicchio • preserved lemon • garlic aioli • vegan • served with spring succotash haricot vert, edamame, red pepper queen corn"
   },
 ]
 
