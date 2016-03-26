@@ -24,6 +24,16 @@ task :guests => :environment do
           plus_one: true
         )
       end
+
+      # aliases for matching plus ones
+      if sheet[row, 3].present?
+        sheet[row, 3].strip.split(', ').map(&:strip).each do |name|
+          Guest.create!(
+            name: name,
+            plus_one: true
+          )
+        end
+      end
     end
   end
 end
