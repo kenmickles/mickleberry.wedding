@@ -6,6 +6,8 @@ class Photo < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
   validates_uniqueness_of :instagram_id, allow_blank: true
 
+  scope :visible, -> { where(hidden: false) }
+
   def photographer
     super || "Somebody"
   end

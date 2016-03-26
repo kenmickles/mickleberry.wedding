@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160321150336) do
+ActiveRecord::Schema.define(version: 20160326204843) do
 
   create_table "guests", force: :cascade do |t|
     t.string   "name",       limit: 191,                 null: false
@@ -40,15 +40,17 @@ ActiveRecord::Schema.define(version: 20160321150336) do
     t.string   "image_content_type", limit: 255
     t.integer  "image_file_size",    limit: 4
     t.datetime "image_updated_at"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
     t.string   "avatar",             limit: 191
     t.integer  "source",             limit: 4
     t.string   "instagram_id",       limit: 191
     t.string   "instagram_code",     limit: 191
+    t.boolean  "hidden",                           default: false, null: false
   end
 
   add_index "photos", ["created_at"], name: "index_photos_on_created_at", using: :btree
+  add_index "photos", ["hidden"], name: "index_photos_on_hidden", using: :btree
   add_index "photos", ["instagram_id"], name: "index_photos_on_instagram_id", using: :btree
 
   create_table "recommendations", force: :cascade do |t|
