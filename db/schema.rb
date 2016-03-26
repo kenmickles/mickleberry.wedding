@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160318205031) do
+ActiveRecord::Schema.define(version: 20160321150336) do
 
   create_table "guests", force: :cascade do |t|
     t.string   "name",       limit: 191,                 null: false
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20160318205031) do
     t.text     "description", limit: 65535
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.string   "short_name",  limit: 191
   end
 
   add_index "meals", ["name"], name: "index_meals_on_name", using: :btree

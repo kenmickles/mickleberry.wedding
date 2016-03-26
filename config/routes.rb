@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    root to: 'rsvps#index'
+    resources :rsvps, only: [:index, :destroy]
+  end
+
   root 'pages#home'
   
   resources :photos, only: [:index]

@@ -15,4 +15,18 @@ class Rsvp < ActiveRecord::Base
   def guest_first_name
     guest_name.strip.split(' ').first if guest_name.present?
   end
+
+  def self.guest_count
+    count = 0 
+
+    Rsvp.where(attending: true).each do |rsvp|
+      if rsvp.guest_name.present?
+        count += 2
+      else
+        count += 1
+      end
+    end
+
+    count
+  end
 end

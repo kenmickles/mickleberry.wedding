@@ -10,20 +10,22 @@
 meals = [
   {
     name: "Barolo Beef Short Ribs",
+    short_name: "Beef",
     description: "slow cooked • served boneless • red wine demi glaze • topped with onion straws • scalloped potato au gratin tower • served with spring succotash of haricot vert, edamame, red pepper queen corn"
   },
   {
     name: "Chatham Cod",
+    short_name: "Cod",
     description: "meyer lemon leek fondue Lentil and Rice Pilaf • served with spring succotash of haricot vert, edamame, red pepper queen corn"
   },
   {
     name: "Charred Grilled Seitan",
+    short_name: "Seitan",
     description: "roasted cauliflower couscous • brussel sprouts • grilled radicchio • preserved lemon • garlic aioli • served with spring succotash haricot vert, edamame, red pepper queen corn"
   },
 ]
 
 meals.each do |data|
   m = Meal.find_or_initialize_by(name: data[:name])
-  m.description = data[:description]
-  m.save!
+  m.update!(data)
 end

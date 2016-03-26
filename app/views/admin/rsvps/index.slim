@@ -1,0 +1,55 @@
+.page-header
+  h2.page-title RSVPs
+
+  button.btn.btn-default
+    | Responses 
+    span.badge = @rsvps.length
+  = " "
+  
+  button.btn.btn-default
+    | Guests  
+    span.badge = Rsvp.guest_count
+  = " "
+
+  - @meals.each do |meal|
+    button.btn.btn-default
+      = "#{meal.short_name} "
+      span.badge = meal.selection_count
+    = " "
+
+= render 'shared/flash'
+
+- if @rsvps.present?
+  table.table.table-striped.table-hover
+    thead
+      tr
+        th Name
+        th Attending?
+        th Guest
+        th Meal
+        th Guest's Meal
+        th Message
+        th Received at
+        th
+    tbody
+      - @rsvps.each do |rsvp|
+        tr
+          td = rsvp.name
+          td
+            - if rsvp.attending?
+              b Yes
+            - else
+              i No
+          td = rsvp.guest_name
+          td = rsvp.meal.try(:name)
+          td = rsvp.guest_meal.try(:name)
+          td
+            - if rsvp.message.present?
+              button.btn.btn-default.btn-sm data-toggle="modal" data-target="#message-#{rsvp.id}" Show Message
+              = render 'modal', rsvp: rsvp
+          td = l(rsvp.created_at, format: :long)
+          td = link_to "Delete", admin_rsvp_path(rsvp), method: :delete, class: "btn btn-danger btn-sm", data: { confirm: "Are you sure?" }
+
+- else
+  p
+    i No responses yet!

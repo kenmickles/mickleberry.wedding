@@ -3,6 +3,8 @@
 #= require turbolinks
 #= require leaflet
 #= require bootstrap/collapse
+#= require bootstrap/transition
+#= require bootstrap/modal
 #= require_tree .
 
 pageLoad = ->
