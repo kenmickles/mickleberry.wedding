@@ -42,6 +42,10 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
+
+  # I only use these locally
+  gem 'prawn-labels'
+  gem 'StreetAddress'
 end
 
 group :test do

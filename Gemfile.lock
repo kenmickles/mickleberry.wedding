@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    StreetAddress (1.0.6)
     actionmailer (4.2.6)
       actionpack (= 4.2.6)
       actionview (= 4.2.6)
@@ -194,6 +195,12 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (= 0.3.0)
+    pdf-core (0.6.0)
+    prawn (2.0.2)
+      pdf-core (~> 0.6.0)
+      ttfunk (~> 1.4.0)
+    prawn-labels (1.2.3)
+      prawn (~> 2.0.0, >= 1.0.0)
     rack (1.6.4)
     rack-cors (0.4.0)
     rack-test (0.6.3)
@@ -281,6 +288,7 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.2)
+    ttfunk (1.4.0)
     turbolinks (2.5.3)
       coffee-rails
     tzinfo (1.2.2)
@@ -300,6 +308,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  StreetAddress
   airbrussh
   awesome_print
   aws-sdk (< 2.0)
@@ -325,6 +334,7 @@ DEPENDENCIES
   leaflet-rails
   mysql2
   paperclip (~> 4.3)
+  prawn-labels
   rack-cors
   rails (= 4.2.6)
   rb-fsevent
