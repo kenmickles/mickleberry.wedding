@@ -10,9 +10,9 @@ h4.tag-tip
   - @photos.each do |photo|
     .grid-item
       - if photo.instagram_id
-        = link_to image_tag(photo.image.url(:medium)), photo.instagram_link
+        = link_to image_tag(photo.image.url(:medium), class: "photo"), photo.instagram_link
       - else
-        = link_to image_tag(photo.image.url(:medium)), asset_url(photo.image.url(:original))
+        = link_to image_tag(photo.image.url(:medium), class: "photo"), asset_url(photo.image.url(:original))
 
       - if photo.caption_without_tags.present?
         .caption
