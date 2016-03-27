@@ -3,16 +3,25 @@ namespace :photos do
   task :instagram => :environment do
     tags = ENV['INSTAGRAM_TAGS'].split(',').map(&:strip)
     max_iterations = 5
+    urls = []
 
+    # start with the mickleberry.wedding user feed
+    urls << "https://i.instagram.com/api/v1/feed/user/3070735638/"
+
+    # then search the tag feeds
     tags.each do |tag|
-      puts "Searching ##{tag}..." unless ENV['SILENT']
+      urls << "https://i.instagram.com/api/v1/feed/tag/#{tag}/"
+    end
+
+    urls.each do |url|
+      puts "Fetching #{url}..." unless ENV['SILENT']
 
       items = []
       max_id = nil
       i = 0
 
       while true do
-        data = HTTParty.get("https://i.instagram.com/api/v1/feed/tag/#{tag}/?rank_token=1982135374_E7D741D2-BBDC-4C9B-B871-BABEE15F7110&ranked_content=true&max_id=#{max_id}", {
+        data = HTTParty.get("#{url}?rank_token=1982135374_E7D741D2-BBDC-4C9B-B871-BABEE15F7110&ranked_content=true&max_id=#{max_id}", {
           headers: {
             "User-Agent" => "Instagram 7.15.0 (iPhone8,1; iPhone OS 9_2; en_US; en-US; scale=2.00; 750x1334) AppleWebKit/420+",
             "Cookie" => "ds_user=#{ENV['INSTAGRAM_USER']}; ds_user_id=#{ENV['INSTAGRAM_USER_ID']}; sessionid=#{ENV['INSTAGRAM_SESSION_ID']}"
@@ -56,7 +65,7 @@ namespace :photos do
         )
       end
 
-      sleep 1.0 unless tag == tags.last
+      sleep 1.0 unless url == urls.last
     end
   end
 end

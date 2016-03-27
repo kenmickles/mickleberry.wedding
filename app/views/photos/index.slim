@@ -8,9 +8,16 @@ h4.tag-tip
 .grid
   .grid-sizer
   - @photos.each do |photo|
-    - if photo.instagram_id
-      = link_to image_tag(photo.image.url(:medium)), photo.instagram_link, class: "grid-item"
-    - else
-      = link_to image_tag(photo.image.url(:medium)), asset_url(photo.image.url(:original)), class: "grid-item"
+    .grid-item
+      - if photo.instagram_id
+        = link_to image_tag(photo.image.url(:medium)), photo.instagram_link
+      - else
+        = link_to image_tag(photo.image.url(:medium)), asset_url(photo.image.url(:original))
+
+      - if photo.caption_without_tags.present?
+        .caption
+          - if photo.photographer.present? && photo.photographer != "mickleberry.wedding"
+            b = "#{photo.photographer}: "
+          = photo.caption_without_tags
 
 = paginate @photos

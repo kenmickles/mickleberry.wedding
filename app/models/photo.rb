@@ -19,4 +19,8 @@ class Photo < ActiveRecord::Base
   def instagram_link
     "https://www.instagram.com/p/#{instagram_code}" if instagram_code.present?
   end
+
+  def caption_without_tags
+    @caption_without_tags ||= caption.to_s.gsub(/\B[@#]\S+\b/, '')
+  end
 end
