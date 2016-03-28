@@ -16,8 +16,9 @@ task :labels => :environment do
     mailing_name = sheet[row, 6]
     name = [mailing_name, name].select(&:present?).first
     address_str = sheet[row, 7]
+    invite_sent = sheet[row, 8].present?
 
-    if name.present? && address_str.present?
+    if !invite_sent && name.present? && address_str.present?
       if address = StreetAddress::US.parse(address_str)
         lines = [name, address.line1, "#{address.city}, #{address.state} #{address.postal_code}"]
         addresses << lines.join("\n")
