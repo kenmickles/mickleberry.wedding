@@ -13,6 +13,6 @@
     = f.select :attending, [["Yes!", true], ["I can't make it...", false]], {}, { class: "form-control" }
   .form-group.rsvp-message style="display:none"
     = f.label :message, "Message for the bride and groom", class: "input-label"
-    = f.text_area :message, class: "form-control", placeholder: "Questions, comments, or general well wishes"
+    = f.text_area :message, class: "form-control", placeholder: "Speak now or forever hold your peace"
   .form-group
     = f.submit "Continue &raquo;".html_safe, class: "btn btn-primary btn-block-xs"
