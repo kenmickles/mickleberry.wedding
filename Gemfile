@@ -23,6 +23,8 @@ gem 'leaflet-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'google_drive'
+gem 'prawn-labels'
+gem 'StreetAddress'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -42,10 +44,6 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
-
-  # I only use these locally
-  gem 'prawn-labels'
-  gem 'StreetAddress'
 end
 
 group :test do
