@@ -21,6 +21,6 @@ class Photo < ActiveRecord::Base
   end
 
   def caption_without_tags
-    @caption_without_tags ||= caption.to_s.gsub(/\B[@#]\S+\b/, '')
+    @caption_without_tags ||= caption.to_s.gsub(/\B[#]\S+\b/, '')
   end
 end
