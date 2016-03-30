@@ -48,7 +48,10 @@
               button.btn.btn-default.btn-sm data-toggle="modal" data-target="#message-#{rsvp.id}" Show Message
               = render 'modal', rsvp: rsvp
           td = l(rsvp.created_at, format: :long)
-          td = link_to "Delete", admin_rsvp_path(rsvp), method: :delete, class: "btn btn-danger btn-sm", data: { confirm: "Are you sure?" }
+          td
+            = link_to "Edit", edit_admin_rsvp_path(rsvp), class: "btn btn-default btn-sm"
+            | &nbsp;
+            = link_to "Delete", admin_rsvp_path(rsvp), method: :delete, class: "btn btn-danger btn-sm", data: { confirm: "Are you sure?" }
 
 - else
   p

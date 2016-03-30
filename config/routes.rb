@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   namespace :admin do
     root to: 'rsvps#index'
-    resources :rsvps, only: [:index, :destroy]
+    resources :rsvps, only: [:index, :destroy, :edit, :update]
   end
 
   root 'pages#home'
