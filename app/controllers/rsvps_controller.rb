@@ -1,5 +1,6 @@
 class RsvpsController < ApplicationController
   before_action :setup_rsvp
+  before_action :require_name, only: [:guest, :meal, :message, :thanks, :sorry]
 
   def new
   end
@@ -36,7 +37,11 @@ class RsvpsController < ApplicationController
     end
     
     @page_title = "RSVP"
-    @rsvp = Rsvp.find_or_initialize_by(id: session[:rsvp_id]) 
+    @rsvp = Rsvp.find_or_initialize_by(id: session[:rsvp_id])
+  end
+
+  def require_name
+    redirect_to new_rsvp_path if @rsvp.name.blank?
   end
 
   def rsvp_params
