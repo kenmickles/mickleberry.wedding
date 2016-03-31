@@ -9,7 +9,7 @@
     = f.label :name, "Name <small class='text-muted'>(required)</small>".html_safe, class: "input-label"
     = f.text_field :name, placeholder: "First & Last Name", class: "form-control", required: true, autofocus: true
     .help-block
-      span.text-primary ️Please use your first and last name 😺
+      span.text-primary Please use your first and last name 😺
   .form-group
     = f.label :attending, "Are you coming?", class: "input-label"
     = f.select :attending, [["Yes!", true], ["I can't make it...", false]], {}, { class: "form-control" }
