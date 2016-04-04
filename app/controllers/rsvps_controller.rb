@@ -1,6 +1,7 @@
 class RsvpsController < ApplicationController
   before_action :setup_rsvp
   before_action :require_name, only: [:guest, :meal, :message, :thanks, :sorry]
+  before_action :separate_combined_names, only: [:create]
 
   def new
   end
@@ -57,6 +58,14 @@ class RsvpsController < ApplicationController
       else
         actions.first
       end
+    end
+  end
+
+  def separate_combined_names
+    names = rsvp_params[:name].to_s.strip.split(/\s(and|&)\s/).map(&:strip).reject { |w| %w(and &).include?(w) }
+    if names.length > 1
+      params[:rsvp][:name] = names.first
+      params[:rsvp][:guest_name] = names.slice(1)
     end
   end
 
