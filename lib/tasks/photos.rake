@@ -33,6 +33,7 @@ namespace :photos do
         end
 
         items += data['items'] if data['items']
+        items += data['ranked_items'] if data['ranked_items']
         
         if data['more_available'] && i < max_iterations
           i += 1
