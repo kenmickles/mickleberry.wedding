@@ -1,6 +1,6 @@
 ## mickleberry.wedding
 
-Just a basic-ass Rails 4 website.
+Basic-ass Rails 4 website + some rake tasks for generate mailing labels, stealing photos from Instagram, etc. You know, wedding stuff.
 
 ### Setup
 ```
