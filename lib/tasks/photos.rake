@@ -23,7 +23,7 @@ namespace :photos do
       while true do
         data = HTTParty.get("#{url}?rank_token=1982135374_E7D741D2-BBDC-4C9B-B871-BABEE15F7110&ranked_content=true&max_id=#{max_id}", {
           headers: {
-            "User-Agent" => "Instagram 7.15.0 (iPhone8,1; iPhone OS 9_2; en_US; en-US; scale=2.00; 750x1334) AppleWebKit/420+",
+            "User-Agent" => "Instagram 8.0.0 (iPhone8,1; iPhone OS 9_3_1; en_US; en-US; scale=2.00; 750x1334) AppleWebKit/420+",
             "Cookie" => "ds_user=#{ENV['INSTAGRAM_USER']}; ds_user_id=#{ENV['INSTAGRAM_USER_ID']}; sessionid=#{ENV['INSTAGRAM_SESSION_ID']}"
           }
         })
@@ -49,7 +49,11 @@ namespace :photos do
 
       item_ids = items.collect { |i| i['id'] }
       existing_ids = Photo.where(instagram_id: item_ids).pluck(:instagram_id)
-      new_items = items.reject { |i| existing_ids.include?(i['id']) }
+      new_items = {}
+      items.reject { |i| existing_ids.include?(i['id']) }.each do |item|
+        new_items[item['id']] = item
+      end
+      new_items = new_items.values
 
       puts "Found #{new_items.length} new photos." unless ENV['SILENT']
 
