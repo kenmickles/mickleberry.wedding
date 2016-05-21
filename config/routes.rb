@@ -24,4 +24,5 @@ Rails.application.routes.draw do
 
   # redirects
   get 'registry', to: redirect('https://www.amazon.com/registry/wedding/1XEYPJ43GL6AE')
+  get 'uber', to: redirect(ENV['UBER_LINK'])
 end
